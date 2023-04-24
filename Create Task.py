@@ -5,7 +5,8 @@ import random as rand
 import time as t
 
 #shit
-key_pen=trtl.Turtle
+key_pen=trtl.Turtle()
+query=trtl.Turtle()
 
 #setup
 score=0
@@ -16,9 +17,9 @@ plantation_cost = 200
 silver_cost = 20
 wn = trtl.Screen()
 #shapes
-wn.register_shape("banana.gif")
+wn.register_shape("Banana.gif")
 clicker = trtl.Turtle()
-clicker.shape("banana.gif")
+clicker.shape("Banana.gif")
 clicker.penup()
 clicker.goto(0,-100)
 
@@ -38,9 +39,9 @@ plantation.penup()
 plantation.goto(-100,200)
 
 
-wn.register_shape("Factory-1.gif")
+wn.register_shape("Factory.gif")
 Fact = trtl.Turtle()
-Fact.shape("Factory-1.gif")
+Fact.shape("Factory.gif")
 Fact.penup()
 Fact.goto(50,200)
 
@@ -79,8 +80,6 @@ def twox_upgrade():
     update_score()
     
 def fourx_upgrade():
-    global points
-    global score
     global plantation_cost
     if score <= plantation_cost:
         print("nothing for four")
@@ -90,8 +89,6 @@ def fourx_upgrade():
         plantation_cost=plantation_cost+600
         
 def eightx_upgrade():
-    global points
-    global score
     global fertilizer_cost
     if  score<=fertilizer_cost:
         print("nothing for eight")
@@ -101,14 +98,13 @@ def eightx_upgrade():
         fertilizer_cost=fertilizer_cost*2
         
         
-'''def key():
+def key():
   key_pen.penup()
+  key_pen.hideturtle()
   key_pen.goto(300,300)
   key_pen.pendown()
-  key_pen.write("space is +",points,"bananas")
   key_pen.penup()
-  key_pen.goto(100, 150)
-  key_pen.write("G is silver bananan upgrade")'''
+  key_pen.write("G = silver banana upgrade, H=plantation, J=fertilizer")
 px = 100
 py = 0
 def plantation():
@@ -122,6 +118,15 @@ def plantation():
     upgrades + 1 
     score += score + 10*upgrades
 
+def prest(upgrades, score):
+  query.penup()
+  query.goto(200,200)
+  query.pendown()
+  preston=(upgrades+score)
+  query.write(preston)
+  
+  return(prest)
+
 def update_score():
     global score
     global upgrades
@@ -130,9 +135,8 @@ def update_score():
     score_pen.clear()
     (score_pen.write(score,font=font_setup))
 
-
-
-
+key()
+prest(score+upgrades)
 wn.onkeypress(update_score, "space")
 wn.onkeypress(twox_upgrade, "g")
 wn.onkeypress(fourx_upgrade, "h")
