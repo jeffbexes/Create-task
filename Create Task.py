@@ -60,11 +60,6 @@ score_pen.penup()
 score_pen.hideturtle()
 score_pen.goto(0,300)
 
-points = 1
-upgrade = ["smol bananana plantation.gif","Factory-1.gif"]
-purchases=upgrade.pop(upgrades)
-
-
 #Variables
 #Upgrades
 def twox_upgrade():
@@ -80,6 +75,8 @@ def twox_upgrade():
     update_score()
     
 def fourx_upgrade():
+    global score
+    global points
     global plantation_cost
     if score <= plantation_cost:
         print("nothing for four")
@@ -89,6 +86,8 @@ def fourx_upgrade():
         plantation_cost=plantation_cost+600
         
 def eightx_upgrade():
+    global score
+    global points
     global fertilizer_cost
     if  score<=fertilizer_cost:
         print("nothing for eight")
@@ -96,7 +95,6 @@ def eightx_upgrade():
         points=points*8
         score=score-fertilizer_cost
         fertilizer_cost=fertilizer_cost*2
-        
         
 def key():
   key_pen.penup()
@@ -118,14 +116,14 @@ def plantation():
     upgrades + 1 
     score += score + 10*upgrades
 
-def prest(upgrades, score):
+def prest(upgrades,score):
   query.penup()
-  query.goto(200,200)
+  query.goto(300,275)
   query.pendown()
   preston=(upgrades+score)
   query.write(preston)
-  
-  return(prest)
+  query.hideturtle()
+  return(preston)
 
 def update_score():
     global score
@@ -136,12 +134,11 @@ def update_score():
     (score_pen.write(score,font=font_setup))
 
 key()
-prest(score+upgrades)
+wn.onkeypress((lambda: prest(upgrades,score)),"q")
 wn.onkeypress(update_score, "space")
 wn.onkeypress(twox_upgrade, "g")
 wn.onkeypress(fourx_upgrade, "h")
 wn.onkeypress(eightx_upgrade, "j")
-
 
 wn.listen()
 wn.mainloop()
