@@ -16,6 +16,7 @@ fertilizer_cost=2000
 plantation_cost = 200
 silver_cost = 20
 wn = trtl.Screen()
+
 #shapes
 wn.register_shape("Banana.gif")
 clicker = trtl.Turtle()
@@ -23,14 +24,11 @@ clicker.shape("Banana.gif")
 clicker.penup()
 clicker.goto(0,-100)
 
-
 wn.register_shape("smol silver_bannana.gif")
 silver_b = trtl.Turtle()
 silver_b.shape("smol silver_bannana.gif")
 silver_b.penup()
 silver_b.goto(-200,200)
-
-
 
 wn.register_shape("smol bananana plantation.gif")
 plantation = trtl.Turtle()
@@ -38,12 +36,16 @@ plantation.shape("smol bananana plantation.gif")
 plantation.penup()
 plantation.goto(-100,200)
 
-
 wn.register_shape("Factory.gif")
 Fact = trtl.Turtle()
 Fact.shape("Factory.gif")
 Fact.penup()
 Fact.goto(50,200)
+
+upgrade=["smol silver_bannana.gif","smol bananana plantation.gif","smol bananana plantation.gif","smol bananana plantation.gif"]
+purchases=upgrade.pop(upgrade)
+
+
 
 
 wn.register_shape("smol trans fertilizer.gif")
@@ -51,7 +53,6 @@ fert = trtl.Turtle()
 fert.shape("smol trans fertilizer.gif")
 fert.penup()
 fert.goto(150,200)
-
 
 #setup
 font_setup = ("Arial", 40, "normal")
