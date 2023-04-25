@@ -18,15 +18,15 @@ silver_cost = 20
 wn = trtl.Screen()
 
 #shapes
-wn.register_shape("Banana.gif")
+wn.register_shape("banana.gif")
 clicker = trtl.Turtle()
-clicker.shape("Banana.gif")
+clicker.shape("banana.gif")
 clicker.penup()
 clicker.goto(0,-100)
 
-wn.register_shape("smol silver_bannana.gif")
+wn.register_shape("smol Silver_bannana.gif")
 silver_b = trtl.Turtle()
-silver_b.shape("smol silver_bannana.gif")
+silver_b.shape("smol Silver_bannana.gif")
 silver_b.penup()
 silver_b.goto(-200,200)
 
@@ -42,11 +42,8 @@ Fact.shape("Factory.gif")
 Fact.penup()
 Fact.goto(50,200)
 
-upgrade=["smol silver_bannana.gif","smol bananana plantation.gif","smol bananana plantation.gif","smol bananana plantation.gif"]
-purchases=upgrade.pop(upgrade)
-
-
-
+'''upgrade=["smol silver_bannana.gif","smol bananana plantation.gif","smol bananana plantation.gif","smol bananana plantation.gif"]
+upgrade.pop(upgrade)'''
 
 wn.register_shape("smol trans fertilizer.gif")
 fert = trtl.Turtle()
@@ -60,6 +57,8 @@ score_pen = trtl.Turtle()
 score_pen.penup()
 score_pen.hideturtle()
 score_pen.goto(0,300)
+
+keylist=["G = silver banana upgrade, H=plantation, J=fertilizer,q=prestiege,c=hideprestiege"]
 
 #Variables
 #Upgrades
@@ -103,7 +102,7 @@ def key():
   key_pen.goto(300,300)
   key_pen.pendown()
   key_pen.penup()
-  key_pen.write("G = silver banana upgrade, H=plantation, J=fertilizer")
+  key_pen.write(keylist)
 px = 100
 py = 0
 def plantation():
@@ -126,16 +125,26 @@ def prest(upgrades,score):
   query.hideturtle()
   return(preston)
 
+
+
+if score<=silver_cost:
+  upgrades=+1
+if score<=fertilizer_cost:
+  upgrades=+2
+if score<=plantation_cost:
+  upgrades=+3
+
 def update_score():
     global score
     global upgrades
-    upgrades += 1
     score += points
     score_pen.clear()
     (score_pen.write(score,font=font_setup))
 
+
 key()
 wn.onkeypress((lambda: prest(upgrades,score)),"q")
+wn.onkeypress(query.clear,"c")
 wn.onkeypress(update_score, "space")
 wn.onkeypress(twox_upgrade, "g")
 wn.onkeypress(fourx_upgrade, "h")
